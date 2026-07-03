@@ -13,3 +13,6 @@ cmd.md
 /one-api
 temp
 .DS_Store
+# patch_models.py backups
+*.go.bak
+
