@@ -7,4 +7,11 @@ var ModelList = []string{
 	"Spark-Max",
 	"Spark-Max-32K",
 	"Spark-4.0-Ultra",
+	"Spark-4.0-Pro",
+	"Spark-5.0-Ultra",
+	"Spark-5.0-Pro",
+	"Spark-5.0-Lite",
+	"Spark-5.0-Mini",
+	"Spark-Translator",
+	"Spark-TTS",
 }
