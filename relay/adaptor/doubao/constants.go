@@ -3,6 +3,11 @@ package doubao
 // https://console.volcengine.com/ark/region:ark+cn-beijing/model
 
 var ModelList = []string{
+	"doubao-seed-2-0",
+	"doubao-seed-2-0-250801",
+	"doubao-seed-code",
+	"doubao-seedance-2-0",
+	"doubao-seedream-5-0-lite",
 	"doubao-seed-1-6-250615",
 	"doubao-seed-1-6-thinking-250715",
 	"doubao-1-5-pro-32k-250115",
