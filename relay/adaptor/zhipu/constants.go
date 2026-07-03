@@ -9,6 +9,8 @@ var ModelList = []string{
 	"glm-5.2-thinking",
 	"glm-5-turbo",
 	"glm-5-air",
+	"glm-5.7",
+	"glm-5.7-thinking",
 	"glm-4.6",
 	"glm-4.5",
 	"glm-4.5-air",
@@ -24,6 +26,8 @@ var ModelList = []string{
 	"glm-4-flashx",
 	"cogview-3-plus",
 	"cogviewx",
+	"cogviewx-flash",
 	"codegeex-4",
 	"embedding-3",
+	"embedding-2",
 }

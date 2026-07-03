@@ -12,6 +12,7 @@ var ModelList = []string{
 	"Spark-5.0-Pro",
 	"Spark-5.0-Lite",
 	"Spark-5.0-Mini",
+	"Spark-5.0-Max",
 	"Spark-Translator",
 	"Spark-TTS",
 }

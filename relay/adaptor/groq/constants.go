@@ -8,6 +8,8 @@ var ModelList = []string{
 	"llama-3.1-8b-instant",
 	"llama-3.1-70b-versatile",
 	"llama-guard-3-8b",
+	"llama-3.2-1b-preview",
+	"llama-3.2-3b-preview",
 	"meta-llama/llama-4-maverick-17b-128e-instruct",
 	"meta-llama/llama-4-scout-17b-16e-instruct",
 	"mixtral-8x7b-32768",

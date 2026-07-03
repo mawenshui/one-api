@@ -23,6 +23,7 @@ var ModelList = []string{
 	"meta-llama/Meta-Llama-3-8B-Instruct",
 	"meta-llama/Meta-Llama-3.1-70B-Instruct",
 	"meta-llama/Meta-Llama-3.1-8B-Instruct",
+	"meta-llama/Meta-Llama-3.3-70B-Instruct",
 	"THUDM/glm-4-9b-chat",
 	"THUDM/chatglm3-6b",
 	"mistralai/Mistral-7B-Instruct-v0.2",

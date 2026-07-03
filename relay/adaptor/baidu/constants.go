@@ -1,12 +1,13 @@
 package baidu
 
 var ModelList = []string{
+	"ERNIE-4.5-8K",
+	"ERNIE-4.5-Turbo-128K",
+	"ERNIE-4.5-128K",
 	"ERNIE-4.0-8K",
 	"ERNIE-4.0-Turbo-8K",
 	"ERNIE-4.0-Turbo-128K",
 	"ERNIE-4.0-128K",
-	"ERNIE-4.5-8K",
-	"ERNIE-4.5-Turbo-128K",
 	"ERNIE-3.5-8K",
 	"ERNIE-3.5-8K-0205",
 	"ERNIE-3.5-8K-1222",
@@ -21,6 +22,7 @@ var ModelList = []string{
 	"ERNIE-Lite-8K-0922",
 	"ERNIE-Lite-8K-0308",
 	"ERNIE-Tiny-8K",
+	"ERNIE-Vil-1",
 	"Embedding-V1",
 	"bge-large-zh",
 	"bge-large-en",
