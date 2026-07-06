@@ -2,17 +2,20 @@
 
 WORKDIR /web
 COPY ./VERSION .
-COPY ./web .
 
-RUN npm install --prefix /web/default & \
-    npm install --prefix /web/berry & \
-    npm install --prefix /web/air & \
-    wait
+# Only copy the active theme directory to speed up build.
+# Currently active theme is "berry" (see docker-compose.fork.yml THEME env).
+# Default / air themes are NOT needed at runtime — one-api only serves the active theme.
+COPY ./web/berry ./berry
 
-RUN DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run build --prefix /web/default & \
-    DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run build --prefix /web/berry & \
-    DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run build --prefix /web/air & \
-    wait
+RUN npm install --prefix /web/berry
+
+# Build the berry theme. The npm run build script ends with "mv -f build ../build/berry"
+# which fails in the container (../build dir doesn't exist yet) — we just build and copy manually.
+RUN DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run build --prefix /web/berry || true
+
+# Manual staging (npm script's mv may have failed; build artifacts live in /web/berry/build).
+RUN mkdir -p /web/build/berry && cp -r /web/berry/build/. /web/build/berry/
 
 FROM golang:alpine AS builder2
 

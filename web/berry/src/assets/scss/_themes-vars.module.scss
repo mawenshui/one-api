@@ -1,30 +1,30 @@
 // paper & background
 $paper: #ffffff;
 
-// primary
-$primaryLight: #eef2f6;
-$primaryMain: #2196f3;
-$primaryDark: #1e88e5;
-$primary200: #90caf9;
-$primary800: #1565c0;
+// primary — indigo (参考 chat.mawenshui.work)
+$primaryLight: #eef2ff;
+$primaryMain: #6366f1;
+$primaryDark: #4f46e5;
+$primary200: #c7d2fe;
+$primary800: #3730a3;
 
-// secondary
-$secondaryLight: #ede7f6;
-$secondaryMain: #673ab7;
-$secondaryDark: #5e35b1;
-$secondary200: #b39ddb;
-$secondary800: #4527a0;
+// secondary — purple
+$secondaryLight: #f3e8ff;
+$secondaryMain: #8b5cf6;
+$secondaryDark: #7c3aed;
+$secondary200: #ddd6fe;
+$secondary800: #5b21b6;
 
-// success Colors
-$successLight: #b9f6ca;
-$success200: #69f0ae;
-$successMain: #00e676;
-$successDark: #00c853;
+// success Colors — OpenAI 绿
+$successLight: #d1fae5;
+$success200: #6ee7b7;
+$successMain: #10a37f;
+$successDark: #047857;
 
 // error
-$errorLight: #ef9a9a;
-$errorMain: #f44336;
-$errorDark: #c62828;
+$errorLight: #fee2e2;
+$errorMain: #ef4444;
+$errorDark: #b91c1c;
 
 // orange
 $orangeLight: #fbe9e7;
@@ -32,53 +32,53 @@ $orangeMain: #ffab91;
 $orangeDark: #d84315;
 
 // warning
-$warningLight: #fff8e1;
-$warningMain: #ffe57f;
-$warningDark: #ffc107;
+$warningLight: #fef3c7;
+$warningMain: #f59e0b;
+$warningDark: #b45309;
 
-// grey
-$grey50: #f8fafc;
-$grey100: #eef2f6;
-$grey200: #e3e8ef;
-$grey300: #cdd5df;
-$grey500: #697586;
-$grey600: #4b5565;
-$grey700: #364152;
-$grey900: #121926;
+// grey (cool slate, 偏蓝灰)
+$grey50: #fafbff;
+$grey100: #f3f4f9;
+$grey200: #e5e7ef;
+$grey300: #d4d8e3;
+$grey500: #64748b;
+$grey600: #475569;
+$grey700: #334155;
+$grey900: #0f172a;
 
-$tableBackground: #f4f6f8;
+$tableBackground: #f8f9fc;
 $tableBorderBottom: #f1f3f4;
 
 // ==============================|| DARK THEME VARIANTS ||============================== //
 
-// paper & background
-$darkBackground: #1a223f; // level 3
-$darkPaper: #111936; // level 4
-$darkDivider: rgba(227, 232, 239, 0.2);
-$darkSelectedBack : rgba(124, 77, 255, 0.15);
+// paper & background — chat.mawenshui.work 风格
+$darkBackground: #0b0d12; // level 3 (页面背景)
+$darkPaper: #14171f; // level 4 (卡片)
+$darkDivider: #232836;
+$darkSelectedBack : rgba(129, 140, 248, 0.15);
 
 // dark 800 & 900
-$darkLevel1: #29314f; // level 1
-$darkLevel2: #212946; // level 2
+$darkLevel1: #1d212c; // level 1 (sidebar / drawer)
+$darkLevel2: #14171f; // level 2 (paper)
 
-// primary dark
-$darkPrimaryLight: #eef2f6;
-$darkPrimaryMain: #2196f3;
-$darkPrimaryDark: #1e88e5;
-$darkPrimary200: #90caf9;
-$darkPrimary800: #1565c0;
+// primary dark — 亮 indigo
+$darkPrimaryLight: #eef2ff;
+$darkPrimaryMain: #818cf8;
+$darkPrimaryDark: #6366f1;
+$darkPrimary200: #c7d2fe;
+$darkPrimary800: #3730a3;
 
-// secondary dark
-$darkSecondaryLight: #d1c4e9;
-$darkSecondaryMain: #7c4dff;
-$darkSecondaryDark: #651fff;
-$darkSecondary200: #b39ddb;
-$darkSecondary800: #6200ea;
+// secondary dark — 亮 purple
+$darkSecondaryLight: #f3e8ff;
+$darkSecondaryMain: #a78bfa;
+$darkSecondaryDark: #8b5cf6;
+$darkSecondary200: #ddd6fe;
+$darkSecondary800: #5b21b6;
 
 // text variants
-$darkTextTitle: #d7dcec;
-$darkTextPrimary: #bdc8f0;
-$darkTextSecondary: #8492c4;
+$darkTextTitle: #f1f5f9;
+$darkTextPrimary: #e2e8f0;
+$darkTextSecondary: #94a3b8;
 
 // ==============================|| JAVASCRIPT ||============================== //
 
@@ -148,16 +148,16 @@ $darkTextSecondary: #8492c4;
 
   // primary dark
   darkPrimaryLight: $darkPrimaryLight;
+  darkPrimary200: $darkPrimary200;
   darkPrimaryMain: $darkPrimaryMain;
   darkPrimaryDark: $darkPrimaryDark;
-  darkPrimary200: $darkPrimary200;
   darkPrimary800: $darkPrimary800;
 
   // secondary dark
   darkSecondaryLight: $darkSecondaryLight;
+  darkSecondary200: $darkSecondary200;
   darkSecondaryMain: $darkSecondaryMain;
   darkSecondaryDark: $darkSecondaryDark;
-  darkSecondary200: $darkSecondary200;
   darkSecondary800: $darkSecondary800;
 
   darkDivider: $darkDivider;
