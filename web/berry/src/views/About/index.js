@@ -41,7 +41,7 @@ const About = () => {
                 <Typography variant="body2">
                   可在设置页面设置关于内容，支持 HTML & Markdown <br />
                   项目仓库地址：
-                  <a href="https://github.com/mawenshui/one-chat">https://github.com/mawenshui/one-chat</a>
+                  <a href="https://github.com/mawenshui/MWS-One-Api">https://github.com/mawenshui/MWS-One-Api</a>
                 </Typography>
               </MainCard>
             </Container>

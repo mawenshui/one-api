@@ -1,5 +1,5 @@
 {
-  "name": "mws-one-chat-web-default",
+  "name": "mws-one-api-web-default",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

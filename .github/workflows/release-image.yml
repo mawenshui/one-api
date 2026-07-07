@@ -34,5 +34,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/mawenshui/one-chat:latest
+          tags: ghcr.io/mawenshui/MWS-One-Api:latest
           provenance: false

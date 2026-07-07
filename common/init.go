@@ -20,7 +20,7 @@ var (
 func printHelp() {
 	fmt.Println("MWS の One Api " + Version + " - Unified LLM API gateway (OpenAI / Claude / Gemini / DeepSeek / 29 providers).")
 	fmt.Println("Copyright (C) 2023 JustSong. Forked and rebranded by mawenshui.")
-	fmt.Println("GitHub: https://github.com/mawenshui/one-chat")
+	fmt.Println("GitHub: https://github.com/mawenshui/MWS-One-Api")
 	fmt.Println("Usage: one-chat [--port <port>] [--log-dir <log directory>] [--version] [--help]")
 }
 
