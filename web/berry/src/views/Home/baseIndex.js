@@ -37,7 +37,7 @@ const BaseIndex = () => {
           <Grid md={7} lg={6}>
             <Stack spacing={3}>
               <Typography variant="h1" sx={{ fontSize: '4rem', color: textColor, lineHeight: 1.5 }}>
-                MWS の One Chat
+                MWS の One Api
               </Typography>
               <Typography
                 variant="h4"

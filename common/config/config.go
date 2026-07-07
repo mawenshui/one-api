@@ -12,7 +12,7 @@ import (
 	"github.com/google/uuid"
 )
 
-var SystemName = "MWS の One Chat"
+var SystemName = "MWS の One Api"
 var ServerAddress = "http://localhost:3000"
 var Footer = ""
 var Logo = ""

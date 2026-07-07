@@ -4,12 +4,12 @@
 
 
 <p align="center">
-  <a href="https://github.com/mawenshui/one-chat"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Chat logo"></a>
+  <a href="https://github.com/mawenshui/one-chat"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Api logo"></a>
 </p>
 
 <div align="center">
 
-# MWS の One Chat
+# MWS の One Api
 
 _✨ 统一 LLM API 网关:OpenAI / Claude / Gemini / DeepSeek / Qwen / 豆包 等 29 个 AI 渠道,一份 Key 走天下,自托管开箱即用 ✨_
 

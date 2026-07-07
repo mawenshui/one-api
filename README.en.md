@@ -3,12 +3,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/mawenshui/one-chat"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Chat logo"></a>
+  <a href="https://github.com/mawenshui/one-chat"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Api logo"></a>
 </p>
 
 <div align="center">
 
-# MWS の One Chat
+# MWS の One Api
 
 _✨ Unified LLM API gateway: 29 providers (OpenAI / Claude / Gemini / DeepSeek / Qwen / Doubao) under one key, self-hosted & ready to go ✨_
 
