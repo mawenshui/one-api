@@ -186,7 +186,16 @@ func (user *User) Delete() error {
 		return errors.New("id 为空！")
 	}
 	blacklist.BanUser(user.Id)
+	// Free all identifiers so a new user can register with the same
+	// username / email / OAuth IDs after the account is gone.
+	// (Status=Deleted alone wasn't enough because IsEmailAlreadyTaken
+	// and friends only check the unique-index column, not the status.)
 	user.Username = fmt.Sprintf("deleted_%s", random.GetUUID())
+	user.Email = ""
+	user.GitHubId = ""
+	user.WeChatId = ""
+	user.LarkId = ""
+	user.OidcId = ""
 	user.Status = UserStatusDeleted
 	err := DB.Model(user).Updates(user).Error
 	return err
