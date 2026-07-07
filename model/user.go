@@ -190,14 +190,18 @@ func (user *User) Delete() error {
 	// username / email / OAuth IDs after the account is gone.
 	// (Status=Deleted alone wasn't enough because IsEmailAlreadyTaken
 	// and friends only check the unique-index column, not the status.)
-	user.Username = fmt.Sprintf("deleted_%s", random.GetUUID())
-	user.Email = ""
-	user.GitHubId = ""
-	user.WeChatId = ""
-	user.LarkId = ""
-	user.OidcId = ""
-	user.Status = UserStatusDeleted
-	err := DB.Model(user).Updates(user).Error
+	// Use map[string]interface{} so empty-string values are actually
+	// written to the DB — GORM's Updates(struct) skips zero values
+	// (which is the empty string for string columns).
+	err := DB.Model(user).Updates(map[string]interface{}{
+		"username":   fmt.Sprintf("deleted_%s", random.GetUUID()),
+		"email":      "",
+		"github_id":  "",
+		"wechat_id":  "",
+		"lark_id":    "",
+		"oidc_id":    "",
+		"status":     UserStatusDeleted,
+	}).Error
 	return err
 }
 
