@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/mawenshui/MWS-One-Api"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Api logo"></a>
+  <a href="https://github.com/mawenshui/mws-one-api"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Api logo"></a>
 </p>
 
 <div align="center">

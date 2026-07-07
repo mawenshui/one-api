@@ -50,7 +50,7 @@ const BaseIndex = () => {
               <Button
                 variant="contained"
                 startIcon={<GitHub />}
-                href="https://github.com/mawenshui/MWS-One-Api"
+                href="https://github.com/mawenshui/mws-one-api"
                 target="_blank"
                 sx={{
                   backgroundColor: '#24292e',
