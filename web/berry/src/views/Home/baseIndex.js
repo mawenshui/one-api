@@ -37,20 +37,20 @@ const BaseIndex = () => {
           <Grid md={7} lg={6}>
             <Stack spacing={3}>
               <Typography variant="h1" sx={{ fontSize: '4rem', color: textColor, lineHeight: 1.5 }}>
-                One API
+                MWS の One Chat
               </Typography>
               <Typography
                 variant="h4"
                 sx={{ fontSize: '1.5rem', color: subTextColor, lineHeight: 1.5 }}
               >
-                All in one 的 OpenAI 接口 <br />
-                整合各种 API 访问方式 <br />
-                一键部署，开箱即用
+                统一 LLM API 网关 <br />
+                整合 29 个 AI 渠道 · 一份 Key 走天下 <br />
+                自托管 · 开箱即用
               </Typography>
               <Button
                 variant="contained"
                 startIcon={<GitHub />}
-                href="https://github.com/songquanpeng/one-api"
+                href="https://github.com/mawenshui/one-chat"
                 target="_blank"
                 sx={{
                   backgroundColor: '#24292e',

@@ -3,14 +3,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/songquanpeng/one-api"><img src="https://raw.githubusercontent.com/songquanpeng/one-api/main/web/default/public/logo.png" width="150" height="150" alt="one-api logo"></a>
+  <a href="https://github.com/mawenshui/one-chat"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Chat logo"></a>
 </p>
 
 <div align="center">
 
-# One API
+# MWS の One Chat
 
-_✨ 標準的な OpenAI API フォーマットを通じてすべての LLM にアクセスでき、導入と利用が容易です ✨_
+_✨ 統一 LLM API ゲートウェイ:OpenAI / Claude / Gemini / DeepSeek / Qwen / 豆包 など 29 の AI プロバイダを 1 つの Key で。セルフホスト、すぐ使えます ✨_
+
+_one-api プロジェクトを fork · mawenshui によって保守_
 
 </div>
 

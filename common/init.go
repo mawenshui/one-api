@@ -18,10 +18,10 @@ var (
 )
 
 func printHelp() {
-	fmt.Println("One API " + Version + " - All in one API service for OpenAI API.")
-	fmt.Println("Copyright (C) 2023 JustSong. All rights reserved.")
-	fmt.Println("GitHub: https://github.com/songquanpeng/one-api")
-	fmt.Println("Usage: one-api [--port <port>] [--log-dir <log directory>] [--version] [--help]")
+	fmt.Println("MWS の One Chat " + Version + " - Unified LLM API gateway (OpenAI / Claude / Gemini / DeepSeek / 29 providers).")
+	fmt.Println("Copyright (C) 2023 JustSong. Forked and rebranded by mawenshui.")
+	fmt.Println("GitHub: https://github.com/mawenshui/one-chat")
+	fmt.Println("Usage: one-chat [--port <port>] [--log-dir <log directory>] [--version] [--help]")
 }
 
 func Init() {

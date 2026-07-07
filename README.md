@@ -4,14 +4,16 @@
 
 
 <p align="center">
-  <a href="https://github.com/songquanpeng/one-api"><img src="https://raw.githubusercontent.com/songquanpeng/one-api/main/web/default/public/logo.png" width="150" height="150" alt="one-api logo"></a>
+  <a href="https://github.com/mawenshui/one-chat"><img src="https://raw.githubusercontent.com/mawenshui/one-chat/main/web/default/public/logo.png" width="150" height="150" alt="MWS の One Chat logo"></a>
 </p>
 
 <div align="center">
 
-# One API
+# MWS の One Chat
 
-_✨ 通过标准的 OpenAI API 格式访问所有的大模型，开箱即用 ✨_
+_✨ 统一 LLM API 网关:OpenAI / Claude / Gemini / DeepSeek / Qwen / 豆包 等 29 个 AI 渠道,一份 Key 走天下,自托管开箱即用 ✨_
+
+_原 one-api 项目 fork · mawenshui 维护_
 
 </div>
 
