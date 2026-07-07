@@ -136,9 +136,11 @@ func Register(c *gin.Context) {
 		return
 	}
 	if err := common.Validate.Struct(&user); err != nil {
+		// Per-field validation error (was the generic "无效的输入").
+		msg := common.FormatValidationError(err)
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": i18n.Translate(c, "invalid_input"),
+			"message": msg,
 		})
 		return
 	}
@@ -379,9 +381,10 @@ func UpdateUser(c *gin.Context) {
 		updatedUser.Password = "$I_LOVE_U" // make Validator happy :)
 	}
 	if err := common.Validate.Struct(&updatedUser); err != nil {
+		msg := common.FormatValidationError(err)
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": i18n.Translate(c, "invalid_input"),
+			"message": msg,
 		})
 		return
 	}
@@ -554,9 +557,10 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 	if err := common.Validate.Struct(&user); err != nil {
+		msg := common.FormatValidationError(err)
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": i18n.Translate(c, "invalid_input"),
+			"message": msg,
 		})
 		return
 	}
