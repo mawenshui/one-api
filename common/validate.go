@@ -1,4 +1,4 @@
-package common
+﻿package common
 
 import (
 	"fmt"
@@ -13,14 +13,14 @@ func init() {
 	Validate = validator.New()
 }
 
-// formatValidationError turns a validator.ValidationErrors into a single
+// FormatValidationError turns a validator.ValidationErrors into a single
 // human-readable string. Each field error becomes "字段: 原因".
 //
 // Why: previously the controller returned the generic
 // "无效的输入，请检查您的输入" which gave the user no hint about
 // which field was actually wrong. This helper makes the error
 // self-explanatory.
-func formatValidationError(err error) string {
+func FormatValidationError(err error) string {
 	if err == nil {
 		return ""
 	}

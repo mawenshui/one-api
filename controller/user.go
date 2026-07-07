@@ -1,4 +1,4 @@
-package controller
+﻿package controller
 
 import (
 	"encoding/json"
@@ -446,7 +446,7 @@ func UpdateSelf(c *gin.Context) {
 		// Convert validator errors to a human-readable per-field message so
 		// the user knows WHICH field is wrong (previously the message was
 		// the generic "无效的输入，请检查您的输入" with no hint).
-		msg := formatValidationError(err)
+		msg := FormatValidationError(err)
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
 			"message": msg,
