@@ -25,6 +25,7 @@ import { onGitHubOAuthClicked, onLarkOAuthClicked, copy } from 'utils/common';
 import * as Yup from 'yup';
 import WechatModal from 'views/Authentication/AuthForms/WechatModal';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import EmailModal from './component/EmailModal';
 import Turnstile from 'react-turnstile';
 import { ReactComponent as Lark } from 'assets/images/icons/lark.svg';
@@ -41,12 +42,44 @@ const validationSchema = Yup.object().shape({
 export default function Profile() {
   const [inputs, setInputs] = useState([]);
   const [showAccountDeleteModal, setShowAccountDeleteModal] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [turnstileEnabled, setTurnstileEnabled] = useState(false);
   const [turnstileSiteKey, setTurnstileSiteKey] = useState('');
   const [turnstileToken, setTurnstileToken] = useState('');
   const [openWechat, setOpenWechat] = useState(false);
   const [openEmail, setOpenEmail] = useState(false);
   const status = useSelector((state) => state.siteInfo);
+  const navigate = useNavigate();
+
+  const handleDeleteAccount = async () => {
+    if (deleting) return;
+    setDeleting(true);
+    try {
+      const res = await API.delete('/api/user/self');
+      const { success, message } = res.data;
+      if (!success) {
+        showError(message || '注销失败，请稍后重试');
+        setDeleting(false);
+        return;
+      }
+      // 清服务端 session
+      try {
+        await API.get('/api/user/logout');
+      } catch (e) {
+        // 忽略登出错误，账号已删除即可
+      }
+      localStorage.removeItem('user');
+      showSuccess('账号已注销，原用户名已释放，可立即重新注册');
+      setShowAccountDeleteModal(false);
+      // 给 toast 一点展示时间再跳走
+      setTimeout(() => {
+        navigate('/register');
+      }, 1500);
+    } catch (err) {
+      showError(err.message || '注销失败，请稍后重试');
+      setDeleting(false);
+    }
+  };
 
   const handleWechatOpen = () => {
     setOpenWechat(true);
@@ -293,21 +326,22 @@ export default function Profile() {
           </Stack>
         </Card>
       </UserCard>
-      <Dialog open={showAccountDeleteModal} onClose={() => setShowAccountDeleteModal(false)} maxWidth={'md'}>
+      <Dialog open={showAccountDeleteModal} onClose={() => !deleting && setShowAccountDeleteModal(false)} maxWidth={'md'}>
         <DialogTitle sx={{ margin: '0px', fontWeight: 500, lineHeight: '1.55556', padding: '24px', fontSize: '1.125rem' }}>
           危险操作
         </DialogTitle>
         <Divider />
-        <DialogContent>您正在删除自己的帐户，将清空所有数据且不可恢复</DialogContent>
+        <DialogContent>
+          您正在删除自己的帐户，<b>账号释放后原用户名与邮箱可重新注册</b>。所有访问令牌、余额和历史记录将不可恢复地清空，请确认已备份好需要的内容。
+        </DialogContent>
         <DialogActions>
-          <Button onClick={() => setShowAccountDeleteModal(false)}>取消</Button>
+          <Button disabled={deleting} onClick={() => setShowAccountDeleteModal(false)}>取消</Button>
           <Button
             sx={{ color: 'error.main' }}
-            onClick={async () => {
-              setShowAccountDeleteModal(false);
-            }}
+            disabled={deleting}
+            onClick={handleDeleteAccount}
           >
-            确定
+            {deleting ? '注销中...' : '确定注销'}
           </Button>
         </DialogActions>
       </Dialog>
