@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import useRegister from 'hooks/useRegister';
 import Turnstile from 'react-turnstile';
 import { useSearchParams } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -34,6 +33,15 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { showError, showInfo } from 'utils/common';
 
 // ===========================|| FIREBASE - REGISTER ||=========================== //
+//
+// Backend validation rules (must match server's `model.User` validate tags):
+//   Username: max=12
+//   Password: min=8, max=20
+//   Email:    max=50
+// We mirror these in the Formik schema below so the user gets field-level
+// errors instead of a generic "无效的输入" from the server.
+
+const VERIFICATION_RESEND_SECONDS = 60;
 
 const RegisterForm = ({ ...others }) => {
   const theme = useTheme();
@@ -46,6 +54,10 @@ const RegisterForm = ({ ...others }) => {
   const [turnstileEnabled, setTurnstileEnabled] = useState(false);
   const [turnstileSiteKey, setTurnstileSiteKey] = useState('');
   const [turnstileToken, setTurnstileToken] = useState('');
+
+  // 60s resend countdown (was missing — bug 1 fix)
+  const [resendCountdown, setResendCountdown] = useState(0);
+  const countdownRef = useRef(null);
 
   const [strength, setStrength] = useState(0);
   const [level, setLevel] = useState();
@@ -64,13 +76,40 @@ const RegisterForm = ({ ...others }) => {
     setLevel(strengthColor(temp));
   };
 
+  const startResendCountdown = () => {
+    if (countdownRef.current) clearInterval(countdownRef.current);
+    setResendCountdown(VERIFICATION_RESEND_SECONDS);
+    countdownRef.current = setInterval(() => {
+      setResendCountdown((v) => {
+        if (v <= 1) {
+          if (countdownRef.current) {
+            clearInterval(countdownRef.current);
+            countdownRef.current = null;
+          }
+          return 0;
+        }
+        return v - 1;
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (countdownRef.current) clearInterval(countdownRef.current);
+    };
+  }, []);
+
   const handleSendCode = async (email) => {
     if (email === '') {
       showError('请输入邮箱');
       return;
     }
+    if (resendCountdown > 0) {
+      showError(`${resendCountdown} 秒后可重新发送`);
+      return;
+    }
     if (turnstileEnabled && turnstileToken === '') {
-      showError('请稍后几秒重试，Turnstile 正在检查用户环境！');
+      showError('请稍后再试，Turnstile 还在验证');
       return;
     }
 
@@ -79,6 +118,7 @@ const RegisterForm = ({ ...others }) => {
       showError(message);
       return;
     }
+    startResendCountdown();
   };
 
   useEffect(() => {
@@ -106,17 +146,31 @@ const RegisterForm = ({ ...others }) => {
           submit: null
         }}
         validationSchema={Yup.object().shape({
-          username: Yup.string().max(255).required('用户名是必填项'),
-          password: Yup.string().max(255).required('密码是必填项'),
+          // Match server-side `validate:"max=12"` on User.Username
+          username: Yup.string()
+            .max(12, '用户名最多 12 个字符')
+            .required('用户名是必填项'),
+          // Match server-side `validate:"min=8,max=20"` on User.Password
+          password: Yup.string()
+            .min(8, '密码至少 8 个字符')
+            .max(20, '密码最多 20 个字符')
+            .required('密码是必填项'),
           confirmPassword: Yup.string()
             .required('确认密码是必填项')
-            .oneOf([Yup.ref('password'), null], '两次输入的密码不一致'),
-          email: showEmailVerification ? Yup.string().email('必须是有效的Email地址').max(255).required('Email是必填项') : Yup.mixed(),
-          verification_code: showEmailVerification ? Yup.string().max(255).required('验证码是必填项') : Yup.mixed()
+            .oneOf([Yup.ref('password'), null], '确认密码与密码不一致'),
+          email: showEmailVerification
+            ? Yup.string()
+                .email('请输入有效的 Email 地址')
+                .max(50, '邮箱最多 50 个字符')
+                .required('Email 是必填项')
+            : Yup.mixed(),
+          verification_code: showEmailVerification
+            ? Yup.string().max(255).required('验证码是必填项')
+            : Yup.mixed()
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           if (turnstileEnabled && turnstileToken === '') {
-            showInfo('请稍后几秒重试，Turnstile 正在检查用户环境！');
+            showInfo('请稍后再试，Turnstile 还在验证');
             setSubmitting(false);
             return;
           }
@@ -240,8 +294,13 @@ const RegisterForm = ({ ...others }) => {
                     onChange={handleChange}
                     endAdornment={
                       <InputAdornment position="end">
-                        <Button variant="contained" color="primary" onClick={() => handleSendCode(values.email)}>
-                          发送验证码
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          disabled={resendCountdown > 0}
+                          onClick={() => handleSendCode(values.email)}
+                        >
+                          {resendCountdown > 0 ? `${resendCountdown}秒后重发` : '发送验证码'}
                         </Button>
                       </InputAdornment>
                     }
